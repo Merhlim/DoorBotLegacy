@@ -1,0 +1,16 @@
+[config]
+homedir = '/home/pi/'
+tempdir = '/dev/shm/'
+camera = True
+please_wait_text = '...'
+Reset_Text = 'Sending alert'
+Current_door_name = 'Door1'
+slackapi = <Slack API key goes here>
+door_bell_key = <Key to the host doorbell software> 
+doorbell1 = <Doorbell ID>
+doorbell2 = <Doorbell ID>
+doorbell3 = <Doorbell ID>
+doorbell4 = <...>
+doorbell5 = <...>
+debug = False
+ring_doorbell = True
