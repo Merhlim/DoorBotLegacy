@@ -1,0 +1,70 @@
+<!DOCTYPE=html>
+<html lang='en-us'>
+<head>
+<meta charset='utf-8'>
+<title>Door security GUI</title>
+<style>
+button {
+	align: center;
+}
+</style>
+</head>
+<body bgcolor='black'>
+<font color='white' size=5 face='helvetica'>
+<h3 align='center'>Delivery</h3>
+<h3 align='center'>Please wait, we know you are here</br></br>A member of staff will be with you shortly</h3>
+<iframe id="messframe" src='imsg.html' width='785' height='130' name="messframe" align='right' font-color='white' font-size=7 src="imsg.html">
+</iframe>
+<form action='index.html'>
+<input type='image' id='button' style="padding:20px 325px" src='back.png' action='index.html'></input>
+</form>
+</font>
+</font>
+<script>
+var xmlhttp;
+var div;
+
+if (window.XMLHttpRequest)
+	{
+	xmlhttp = new XMLHttpRequest();
+	}
+else
+	{
+	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+xmlhttp.onreadystatechange = function()
+{
+if (!div) return;
+
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+	{
+	msg = xmlhttp.responseText;
+	div.innerHTML = msg + '<br>' + div.innerHTML;
+//	div.scrollTop = div.scrollHeight;
+	div.scrollTop = 0;
+	}
+}
+
+function goback()
+{
+history.go(-1);
+}
+
+function framerefresh()
+{
+frame = document.getElementById('messframe');
+div = frame.contentWindow.document.getElementById('messages');
+if (div)
+	{
+	xmlhttp.open("GET", "/cgi-bin/msg.py", true);
+	xmlhttp.send();
+	}
+}
+window.setTimeout(goback, 60000);
+framerefresh();
+
+</script>
+
+</body>
+</html>
